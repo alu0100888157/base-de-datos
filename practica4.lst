@@ -1,0 +1,912 @@
+SQL> SPOOL
+currently spooling to practica4.lst
+SQL> SELECT *
+  2  FROM PLAN_DOCENTE;
+
+       DNI        CAS        CTA        CPA        CLA FI        FF             
+---------- ---------- ---------- ---------- ---------- --------- ---------      
+      4444          1          3        1.5        1.5 01-SEP-11                
+      4444          4        1.5          0        1.5 01-SEP-08 31-AUG-10      
+      4444          4          3          0          0 01-SEP-10                
+      1111          8          3        1.5        1.5 01-SEP-07 31-AUG-09      
+      1111          8          3          0          0 01-SEP-09                
+      3030          8          0        1.5        1.5 01-SEP-09                
+      2222          4        1.5          0        1.5 01-SEP-09                
+      2222          3        1.5          0        1.5 01-SEP-06 31-AUG-07      
+      1010          2        1.5        1.5          3 01-SEP-05 31-AUG-08      
+      3333          2        1.5        1.5          3 01-SEP-08                
+      1010          9          3          0          3 01-SEP-08 31-AUG-09      
+
+       DNI        CAS        CTA        CPA        CLA FI        FF             
+---------- ---------- ---------- ---------- ---------- --------- ---------      
+      1010          9        1.5          0        1.5 01-SEP-09                
+      9999          7          3          3          0 01-SEP-10                
+      5555          6          3          3          0 31-MAR-10                
+      6666         10          3        1.5        1.5 01-SEP-08 31-AUG-11      
+      8888         11          6          0          0 01-SEP-09                
+      2020          3        1.5          0        1.5 01-SEP-08                
+      7777         12        4.5          3          0 01-SEP-10                
+      3333          9        1.5          0        1.5 01-SEP-09                
+
+19 rows selected.
+
+SQL> UPDATE PLAN_DOCENTE
+  2  SET CAS=5
+  3  WHERE (DNI=4444)&&(CLA=0);
+WHERE (DNI=4444)&&(CLA=0)
+                *
+ERROR at line 3:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> UPDATE PLAN_DOCENTE
+  2  SET CAS=5
+  3  WHERE (DNI=4444)AND(CLA=0);
+
+1 row updated.
+
+SQL> SELEC *
+SP2-0042: unknown command "SELEC *" - rest of line ignored.
+SQL> SELECT *
+  2  FROM PLAN_DOCENTE;
+
+       DNI        CAS        CTA        CPA        CLA FI        FF             
+---------- ---------- ---------- ---------- ---------- --------- ---------      
+      4444          1          3        1.5        1.5 01-SEP-11                
+      4444          4        1.5          0        1.5 01-SEP-08 31-AUG-10      
+      4444          5          3          0          0 01-SEP-10                
+      1111          8          3        1.5        1.5 01-SEP-07 31-AUG-09      
+      1111          8          3          0          0 01-SEP-09                
+      3030          8          0        1.5        1.5 01-SEP-09                
+      2222          4        1.5          0        1.5 01-SEP-09                
+      2222          3        1.5          0        1.5 01-SEP-06 31-AUG-07      
+      1010          2        1.5        1.5          3 01-SEP-05 31-AUG-08      
+      3333          2        1.5        1.5          3 01-SEP-08                
+      1010          9          3          0          3 01-SEP-08 31-AUG-09      
+
+       DNI        CAS        CTA        CPA        CLA FI        FF             
+---------- ---------- ---------- ---------- ---------- --------- ---------      
+      1010          9        1.5          0        1.5 01-SEP-09                
+      9999          7          3          3          0 01-SEP-10                
+      5555          6          3          3          0 31-MAR-10                
+      6666         10          3        1.5        1.5 01-SEP-08 31-AUG-11      
+      8888         11          6          0          0 01-SEP-09                
+      2020          3        1.5          0        1.5 01-SEP-08                
+      7777         12        4.5          3          0 01-SEP-10                
+      3333          9        1.5          0        1.5 01-SEP-09                
+
+19 rows selected.
+
+SQL> SELECT CD, D FROM DEPARTAMENTO;
+
+        CD D                                                                    
+---------- ------------------------------------------------------------         
+         1 ANALISIS MATEMATICO                                                  
+         2 ASTROFISICA                                                          
+         3 ESTADISTICA, INVESTIGACION OPERATIVA Y COMPUTACION                   
+         4 MATEMATICA FUNDAMENTAL                                               
+
+SQL> SELECT *
+  2  FROM AREA;
+
+       CAR AR                                                                   
+---------- ------------------------------------------------------------         
+        CD                                                                      
+----------                                                                      
+         1 ALGEBRA                                                              
+         4                                                                      
+                                                                                
+         2 ANALISIS MATEMATICO                                                  
+         1                                                                      
+                                                                                
+         3 ASTRONOMIA Y ASTROFISICA                                             
+         2                                                                      
+                                                                                
+
+       CAR AR                                                                   
+---------- ------------------------------------------------------------         
+        CD                                                                      
+----------                                                                      
+         4 CIENCIAS DE LA COMPUTACION E INTELIGENCIA ARTIFICIAL                 
+         3                                                                      
+                                                                                
+         5 DIDACTICA DE LA MATEMATICA                                           
+         1                                                                      
+                                                                                
+         6 ESTADISTICA E INVESTIGACION OPERATIVA                                
+         3                                                                      
+                                                                                
+
+       CAR AR                                                                   
+---------- ------------------------------------------------------------         
+        CD                                                                      
+----------                                                                      
+         7 LENGUAJES Y SISTEMAS INFORMATICOS                                    
+         3                                                                      
+                                                                                
+         8 MATEMATICA APLICADA                                                  
+         1                                                                      
+                                                                                
+
+8 rows selected.
+
+SQL> UPDATE
+  2  
+SQL> UPDATE ASIGNATURA
+  2  
+SQL> 
+SQL> SELECT *
+  2  FROM ASIGNATURA;
+
+       CAS A                                                  T           CUR   
+---------- -------------------------------------------------- ---- ----------   
+       CAR         CT         CP         CL                                     
+---------- ---------- ---------- ----------                                     
+         1 BASES DE DATOS                                     GII           3   
+         7          3        1.5        1.5                                     
+                                                                                
+         2 INTELIGENCIA ARTIFICIAL                            GII           3   
+         4        1.5        1.5          3                                     
+                                                                                
+         3 ALMACENES DE DATOS                                 MII           1   
+         7        1.5          0        1.5                                     
+                                                                                
+
+       CAS A                                                  T           CUR   
+---------- -------------------------------------------------- ---- ----------   
+       CAR         CT         CP         CL                                     
+---------- ---------- ---------- ----------                                     
+         4 MINERIAS DE DATOS                                  MII           1   
+         7        1.5          0        1.5                                     
+                                                                                
+         5 INFORMATICA BASICA                                 GII           1   
+         7          3        1.5        1.5                                     
+                                                                                
+         6 ALGEBRA                                            GII           1   
+         1          3          3          0                                     
+                                                                                
+
+       CAS A                                                  T           CUR   
+---------- -------------------------------------------------- ---- ----------   
+       CAR         CT         CP         CL                                     
+---------- ---------- ---------- ----------                                     
+         7 CALCULO                                            GII           1   
+         8          3          3          0                                     
+                                                                                
+         8 OPTIMIZACION                                       GII           1   
+         6          3        1.5        1.5                                     
+                                                                                
+         9 GESTION DE RIESGOS                                 GII           3   
+         4          3          0          3                                     
+                                                                                
+
+       CAS A                                                  T           CUR   
+---------- -------------------------------------------------- ---- ----------   
+       CAR         CT         CP         CL                                     
+---------- ---------- ---------- ----------                                     
+        10 ASTRONOMIA                                         GF            2   
+         3          3        1.5        1.5                                     
+                                                                                
+        11 ENSENANZA DE LA MATEMATICA                         GM            2   
+         5          6          0          0                                     
+                                                                                
+        12 ANALISIS COMPLEJO                                  GM            4   
+         2        4.5          3          0                                     
+                                                                                
+
+12 rows selected.
+
+SQL> UPDATE ASIGNATURA
+  2  SET A='MINERIA DE DATOS'
+  3  WHERE CAS=4;
+
+1 row updated.
+
+SQL> SELECT *
+  2  FROM ASIGNATURA;
+
+       CAS A                                                  T           CUR   
+---------- -------------------------------------------------- ---- ----------   
+       CAR         CT         CP         CL                                     
+---------- ---------- ---------- ----------                                     
+         1 BASES DE DATOS                                     GII           3   
+         7          3        1.5        1.5                                     
+                                                                                
+         2 INTELIGENCIA ARTIFICIAL                            GII           3   
+         4        1.5        1.5          3                                     
+                                                                                
+         3 ALMACENES DE DATOS                                 MII           1   
+         7        1.5          0        1.5                                     
+                                                                                
+
+       CAS A                                                  T           CUR   
+---------- -------------------------------------------------- ---- ----------   
+       CAR         CT         CP         CL                                     
+---------- ---------- ---------- ----------                                     
+         4 MINERIA DE DATOS                                   MII           1   
+         7        1.5          0        1.5                                     
+                                                                                
+         5 INFORMATICA BASICA                                 GII           1   
+         7          3        1.5        1.5                                     
+                                                                                
+         6 ALGEBRA                                            GII           1   
+         1          3          3          0                                     
+                                                                                
+
+       CAS A                                                  T           CUR   
+---------- -------------------------------------------------- ---- ----------   
+       CAR         CT         CP         CL                                     
+---------- ---------- ---------- ----------                                     
+         7 CALCULO                                            GII           1   
+         8          3          3          0                                     
+                                                                                
+         8 OPTIMIZACION                                       GII           1   
+         6          3        1.5        1.5                                     
+                                                                                
+         9 GESTION DE RIESGOS                                 GII           3   
+         4          3          0          3                                     
+                                                                                
+
+       CAS A                                                  T           CUR   
+---------- -------------------------------------------------- ---- ----------   
+       CAR         CT         CP         CL                                     
+---------- ---------- ---------- ----------                                     
+        10 ASTRONOMIA                                         GF            2   
+         3          3        1.5        1.5                                     
+                                                                                
+        11 ENSENANZA DE LA MATEMATICA                         GM            2   
+         5          6          0          0                                     
+                                                                                
+        12 ANALISIS COMPLEJO                                  GM            4   
+         2        4.5          3          0                                     
+                                                                                
+
+12 rows selected.
+
+SQL> SELECT CAS
+  2  FROM ASIGNATURA;
+
+       CAS                                                                      
+----------                                                                      
+         1                                                                      
+         2                                                                      
+         3                                                                      
+         4                                                                      
+         5                                                                      
+         6                                                                      
+         7                                                                      
+         8                                                                      
+         9                                                                      
+        10                                                                      
+        11                                                                      
+
+       CAS                                                                      
+----------                                                                      
+        12                                                                      
+
+12 rows selected.
+
+SQL> SELECT ALL CAS
+  2  FROM ASIGNATURA;
+
+       CAS                                                                      
+----------                                                                      
+         1                                                                      
+         2                                                                      
+         3                                                                      
+         4                                                                      
+         5                                                                      
+         6                                                                      
+         7                                                                      
+         8                                                                      
+         9                                                                      
+        10                                                                      
+        11                                                                      
+
+       CAS                                                                      
+----------                                                                      
+        12                                                                      
+
+12 rows selected.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> SELECT *
+  2  FROM ASIGNATURA;
+
+       CAS A                                                  T           CUR   
+---------- -------------------------------------------------- ---- ----------   
+       CAR         CT         CP         CL                                     
+---------- ---------- ---------- ----------                                     
+         1 BASES DE DATOS                                     GII           3   
+         7          3        1.5        1.5                                     
+                                                                                
+         2 INTELIGENCIA ARTIFICIAL                            GII           3   
+         4        1.5        1.5          3                                     
+                                                                                
+         3 ALMACENES DE DATOS                                 MII           1   
+         7        1.5          0        1.5                                     
+                                                                                
+
+       CAS A                                                  T           CUR   
+---------- -------------------------------------------------- ---- ----------   
+       CAR         CT         CP         CL                                     
+---------- ---------- ---------- ----------                                     
+         4 MINERIA DE DATOS                                   MII           1   
+         7        1.5          0        1.5                                     
+                                                                                
+         5 INFORMATICA BASICA                                 GII           1   
+         7          3        1.5        1.5                                     
+                                                                                
+         6 ALGEBRA                                            GII           1   
+         1          3          3          0                                     
+                                                                                
+
+       CAS A                                                  T           CUR   
+---------- -------------------------------------------------- ---- ----------   
+       CAR         CT         CP         CL                                     
+---------- ---------- ---------- ----------                                     
+         7 CALCULO                                            GII           1   
+         8          3          3          0                                     
+                                                                                
+         8 OPTIMIZACION                                       GII           1   
+         6          3        1.5        1.5                                     
+                                                                                
+         9 GESTION DE RIESGOS                                 GII           3   
+         4          3          0          3                                     
+                                                                                
+
+       CAS A                                                  T           CUR   
+---------- -------------------------------------------------- ---- ----------   
+       CAR         CT         CP         CL                                     
+---------- ---------- ---------- ----------                                     
+        10 ASTRONOMIA                                         GF            2   
+         3          3        1.5        1.5                                     
+                                                                                
+        11 ENSENANZA DE LA MATEMATICA                         GM            2   
+         5          6          0          0                                     
+                                                                                
+        12 ANALISIS COMPLEJO                                  GM            4   
+         2        4.5          3          0                                     
+                                                                                
+
+12 rows selected.
+
+SQL> SELECT DNI
+  2  FROM PROFESORES;
+FROM PROFESORES
+     *
+ERROR at line 2:
+ORA-00942: table or view does not exist 
+
+
+SQL> SELECT DNI
+  2  FROM PROFESOR;
+
+       DNI                                                                      
+----------                                                                      
+      1010                                                                      
+      1111                                                                      
+      2020                                                                      
+      2222                                                                      
+      3030                                                                      
+      3333                                                                      
+      4444                                                                      
+      5555                                                                      
+      6666                                                                      
+      7777                                                                      
+      8888                                                                      
+
+       DNI                                                                      
+----------                                                                      
+      9999                                                                      
+
+12 rows selected.
+
+SQL> SELECT P,DNI,CAT,CAT
+  2  FROM PROFESOR;
+
+P                                                                   DNI CAT     
+------------------------------------------------------------ ---------- -----   
+CAT                                                                             
+-----                                                                           
+JUAN                                                               1111 CU      
+CU                                                                              
+                                                                                
+CARLOS                                                             2222 TU      
+TU                                                                              
+                                                                                
+PEDRO                                                              3333 TEU     
+TEU                                                                             
+                                                                                
+
+P                                                                   DNI CAT     
+------------------------------------------------------------ ---------- -----   
+CAT                                                                             
+-----                                                                           
+MARIA                                                              4444 TU      
+TU                                                                              
+                                                                                
+IVAN                                                               5555 CEU     
+CEU                                                                             
+                                                                                
+CARMEN                                                             6666 CD      
+CD                                                                              
+                                                                                
+
+P                                                                   DNI CAT     
+------------------------------------------------------------ ---------- -----   
+CAT                                                                             
+-----                                                                           
+MARIO                                                              7777 TU      
+TU                                                                              
+                                                                                
+FRANCISCO                                                          8888 TU      
+TU                                                                              
+                                                                                
+ANGELA                                                             9999 TEU     
+TEU                                                                             
+                                                                                
+
+P                                                                   DNI CAT     
+------------------------------------------------------------ ---------- -----   
+CAT                                                                             
+-----                                                                           
+DAVID                                                              1010 TU      
+TU                                                                              
+                                                                                
+SOLEDAD                                                            2020 CU      
+CU                                                                              
+                                                                                
+JOSE MANUEL                                                        3030 TEU     
+TEU                                                                             
+                                                                                
+
+12 rows selected.
+
+SQL> SELECT P Nombre,DNI NIF, CAT Categoria,CAR Cod_Area
+  2  FROM PROFESOR;
+
+NOMBRE                                                              NIF CATEG   
+------------------------------------------------------------ ---------- -----   
+  COD_AREA                                                                      
+----------                                                                      
+JUAN                                                               1111 CU      
+         6                                                                      
+                                                                                
+CARLOS                                                             2222 TU      
+         7                                                                      
+                                                                                
+PEDRO                                                              3333 TEU     
+         4                                                                      
+                                                                                
+
+NOMBRE                                                              NIF CATEG   
+------------------------------------------------------------ ---------- -----   
+  COD_AREA                                                                      
+----------                                                                      
+MARIA                                                              4444 TU      
+         7                                                                      
+                                                                                
+IVAN                                                               5555 CEU     
+         1                                                                      
+                                                                                
+CARMEN                                                             6666 CD      
+         3                                                                      
+                                                                                
+
+NOMBRE                                                              NIF CATEG   
+------------------------------------------------------------ ---------- -----   
+  COD_AREA                                                                      
+----------                                                                      
+MARIO                                                              7777 TU      
+         2                                                                      
+                                                                                
+FRANCISCO                                                          8888 TU      
+         5                                                                      
+                                                                                
+ANGELA                                                             9999 TEU     
+         8                                                                      
+                                                                                
+
+NOMBRE                                                              NIF CATEG   
+------------------------------------------------------------ ---------- -----   
+  COD_AREA                                                                      
+----------                                                                      
+DAVID                                                              1010 TU      
+         4                                                                      
+                                                                                
+SOLEDAD                                                            2020 CU      
+         7                                                                      
+                                                                                
+JOSE MANUEL                                                        3030 TEU     
+         6                                                                      
+                                                                                
+
+12 rows selected.
+
+SQL> SELECT CAS,A,T,CUR,CAR,CT,CP,CL
+  2  FROM ASIGNATURA
+  3  ;
+
+       CAS A                                                  T           CUR   
+---------- -------------------------------------------------- ---- ----------   
+       CAR         CT         CP         CL                                     
+---------- ---------- ---------- ----------                                     
+         1 BASES DE DATOS                                     GII           3   
+         7          3        1.5        1.5                                     
+                                                                                
+         2 INTELIGENCIA ARTIFICIAL                            GII           3   
+         4        1.5        1.5          3                                     
+                                                                                
+         3 ALMACENES DE DATOS                                 MII           1   
+         7        1.5          0        1.5                                     
+                                                                                
+
+       CAS A                                                  T           CUR   
+---------- -------------------------------------------------- ---- ----------   
+       CAR         CT         CP         CL                                     
+---------- ---------- ---------- ----------                                     
+         4 MINERIA DE DATOS                                   MII           1   
+         7        1.5          0        1.5                                     
+                                                                                
+         5 INFORMATICA BASICA                                 GII           1   
+         7          3        1.5        1.5                                     
+                                                                                
+         6 ALGEBRA                                            GII           1   
+         1          3          3          0                                     
+                                                                                
+
+       CAS A                                                  T           CUR   
+---------- -------------------------------------------------- ---- ----------   
+       CAR         CT         CP         CL                                     
+---------- ---------- ---------- ----------                                     
+         7 CALCULO                                            GII           1   
+         8          3          3          0                                     
+                                                                                
+         8 OPTIMIZACION                                       GII           1   
+         6          3        1.5        1.5                                     
+                                                                                
+         9 GESTION DE RIESGOS                                 GII           3   
+         4          3          0          3                                     
+                                                                                
+
+       CAS A                                                  T           CUR   
+---------- -------------------------------------------------- ---- ----------   
+       CAR         CT         CP         CL                                     
+---------- ---------- ---------- ----------                                     
+        10 ASTRONOMIA                                         GF            2   
+         3          3        1.5        1.5                                     
+                                                                                
+        11 ENSENANZA DE LA MATEMATICA                         GM            2   
+         5          6          0          0                                     
+                                                                                
+        12 ANALISIS COMPLEJO                                  GM            4   
+         2        4.5          3          0                                     
+                                                                                
+
+12 rows selected.
+
+SQL> SELECT CAS,A,T,CUR,CAR,CT,CP,CL
+  2  FROM ASIGNATURA
+  3  WHERE T='GII';
+
+       CAS A                                                  T           CUR   
+---------- -------------------------------------------------- ---- ----------   
+       CAR         CT         CP         CL                                     
+---------- ---------- ---------- ----------                                     
+         1 BASES DE DATOS                                     GII           3   
+         7          3        1.5        1.5                                     
+                                                                                
+         2 INTELIGENCIA ARTIFICIAL                            GII           3   
+         4        1.5        1.5          3                                     
+                                                                                
+         5 INFORMATICA BASICA                                 GII           1   
+         7          3        1.5        1.5                                     
+                                                                                
+
+       CAS A                                                  T           CUR   
+---------- -------------------------------------------------- ---- ----------   
+       CAR         CT         CP         CL                                     
+---------- ---------- ---------- ----------                                     
+         6 ALGEBRA                                            GII           1   
+         1          3          3          0                                     
+                                                                                
+         7 CALCULO                                            GII           1   
+         8          3          3          0                                     
+                                                                                
+         8 OPTIMIZACION                                       GII           1   
+         6          3        1.5        1.5                                     
+                                                                                
+
+       CAS A                                                  T           CUR   
+---------- -------------------------------------------------- ---- ----------   
+       CAR         CT         CP         CL                                     
+---------- ---------- ---------- ----------                                     
+         9 GESTION DE RIESGOS                                 GII           3   
+         4          3          0          3                                     
+                                                                                
+
+7 rows selected.
+
+SQL> 
+SQL> 
+SQL> SELECT DNI
+  2  FROM PROFESOR
+  3  WHERE CAR=7;
+
+       DNI                                                                      
+----------                                                                      
+      2222                                                                      
+      4444                                                                      
+      2020                                                                      
+
+SQL> SELECT DISTINCT P
+  2  FROM PROFESOR
+  3  WHERE CAR=7;
+
+P                                                                               
+------------------------------------------------------------                    
+SOLEDAD                                                                         
+CARLOS                                                                          
+MARIA                                                                           
+
+SQL> SELECT AR
+  2  FROM ASIGNATURA
+  3  
+SQL> 
+SQL> SELECT CAS
+  2  
+SQL> 
+SQL> SELECT A
+  2  FROM ASIGNATURA
+  3  WHERE CAS>=7;
+
+A                                                                               
+--------------------------------------------------                              
+CALCULO                                                                         
+OPTIMIZACION                                                                    
+GESTION DE RIESGOS                                                              
+ASTRONOMIA                                                                      
+ENSENANZA DE LA MATEMATICA                                                      
+ANALISIS COMPLEJO                                                               
+
+6 rows selected.
+
+SQL> FROM ASIGNATURA
+SP2-0734: unknown command beginning "FROM ASIGN..." - rest of line ignored.
+SQL> SELECT A
+  2  FROM ASIGNATURA
+  3  WHERE CAS>7;
+
+A                                                                               
+--------------------------------------------------                              
+OPTIMIZACION                                                                    
+GESTION DE RIESGOS                                                              
+ASTRONOMIA                                                                      
+ENSENANZA DE LA MATEMATICA                                                      
+ANALISIS COMPLEJO                                                               
+
+SQL> SELECT CAS
+  2  FROM ASIGNATURA
+  3  WHERE A='ALMACENES DE DATOS';
+
+       CAS                                                                      
+----------                                                                      
+         3                                                                      
+
+SQL> SELECT A
+  2  FROM ASIGNATURA
+  3  WHERE CAS NOT EQUAL 8;
+WHERE CAS NOT EQUAL 8
+              *
+ERROR at line 3:
+ORA-00920: invalid relational operator 
+
+
+SQL> SELECT A
+  2  FROM ASIGNATURA
+  3  WHERE CAS<>8;
+
+A                                                                               
+--------------------------------------------------                              
+BASES DE DATOS                                                                  
+INTELIGENCIA ARTIFICIAL                                                         
+ALMACENES DE DATOS                                                              
+MINERIA DE DATOS                                                                
+INFORMATICA BASICA                                                              
+ALGEBRA                                                                         
+CALCULO                                                                         
+GESTION DE RIESGOS                                                              
+ASTRONOMIA                                                                      
+ENSENANZA DE LA MATEMATICA                                                      
+ANALISIS COMPLEJO                                                               
+
+11 rows selected.
+
+SQL> SELECT A
+  2  FROM ASIGNATURA
+  3  WHERE (CAS<>8)AND(CAS<>11);
+
+A                                                                               
+--------------------------------------------------                              
+BASES DE DATOS                                                                  
+INTELIGENCIA ARTIFICIAL                                                         
+ALMACENES DE DATOS                                                              
+MINERIA DE DATOS                                                                
+INFORMATICA BASICA                                                              
+ALGEBRA                                                                         
+CALCULO                                                                         
+GESTION DE RIESGOS                                                              
+ASTRONOMIA                                                                      
+ANALISIS COMPLEJO                                                               
+
+10 rows selected.
+
+SQL> SELECT A
+  2  
+SQL> SELECT CAS
+  2  FROM PLAN_DOCENTE
+  3  WHERE DNI=3333;
+
+       CAS                                                                      
+----------                                                                      
+         2                                                                      
+         9                                                                      
+
+SQL> SELECT CD
+  2  FROM DEPARTAMENTO
+  3  WHERE D='ASTROFISICA';
+
+        CD                                                                      
+----------                                                                      
+         2                                                                      
+
+SQL> SELECT DNI
+  2  FROM PLAN_DOCENTE
+  3  WHERE FI='01-SEP-09';
+
+       DNI                                                                      
+----------                                                                      
+      1010                                                                      
+      1111                                                                      
+      2222                                                                      
+      3030                                                                      
+      3333                                                                      
+      8888                                                                      
+
+6 rows selected.
+
+SQL> SELECT DNI
+  2  FROM PLAN_DOCENTE
+  3  WHERE FI<'01-SEP-09';
+
+       DNI                                                                      
+----------                                                                      
+      1010                                                                      
+      1010                                                                      
+      1111                                                                      
+      2020                                                                      
+      2222                                                                      
+      3333                                                                      
+      4444                                                                      
+      6666                                                                      
+
+8 rows selected.
+
+SQL> SELECT DISTINCT DNI
+  2  FROM PLAN_DOCENTE
+  3  WHERE FI<'01-SEP-09';
+
+       DNI                                                                      
+----------                                                                      
+      1010                                                                      
+      1111                                                                      
+      2020                                                                      
+      2222                                                                      
+      3333                                                                      
+      4444                                                                      
+      6666                                                                      
+
+7 rows selected.
+
+SQL> SELECT AR
+  2  FROM AREA
+  3  WHERE (CAR=3)AND(CAR=5)AND(CAR=8);
+
+no rows selected
+
+SQL> SELECT AR
+  2  FROM AREA
+  3  WHERE (CAR<>3)AND(CAR<>5)AND(CAR<>8);
+
+AR                                                                              
+------------------------------------------------------------                    
+ALGEBRA                                                                         
+ANALISIS MATEMATICO                                                             
+CIENCIAS DE LA COMPUTACION E INTELIGENCIA ARTIFICIAL                            
+ESTADISTICA E INVESTIGACION OPERATIVA                                           
+LENGUAJES Y SISTEMAS INFORMATICOS                                               
+
+SQL> SELECT AR
+  2  FROM AREA
+  3  WHERE (CAR=3)OR(CAR=5)OR(CAR=8);
+
+AR                                                                              
+------------------------------------------------------------                    
+ASTRONOMIA Y ASTROFISICA                                                        
+DIDACTICA DE LA MATEMATICA                                                      
+MATEMATICA APLICADA                                                             
+
+SQL> SELECT P
+  2  FROM PROFESOR
+  3  WHERE DNI BETWEEN 3000 AND 7000;
+
+P                                                                               
+------------------------------------------------------------                    
+JOSE MANUEL                                                                     
+PEDRO                                                                           
+MARIA                                                                           
+IVAN                                                                            
+CARMEN                                                                          
+
+SQL> SELECT P
+  2  FROM PROFESOR
+  3  WHERE DNI NOT BETWEEN 3000 AND 7000;
+
+P                                                                               
+------------------------------------------------------------                    
+DAVID                                                                           
+JUAN                                                                            
+SOLEDAD                                                                         
+CARLOS                                                                          
+MARIO                                                                           
+FRANCISCO                                                                       
+ANGELA                                                                          
+
+7 rows selected.
+
+SQL> SELECT CAS
+  2  FROM PLAN_DOCENTE
+  3  WHERE DNI=1111;
+
+       CAS                                                                      
+----------                                                                      
+         8                                                                      
+         8                                                                      
+
+SQL> SELECT A (CT+CP+CL)
+  2  FROM ASIGNATURA;
+SELECT A (CT+CP+CL)
+       *
+ERROR at line 1:
+ORA-00904: "A": invalid identifier 
+
+
+SQL> SELECT A, (CT+CP+CL)
+  2  FROM ASIGNATURA;
+
+A                                                  (CT+CP+CL)                   
+-------------------------------------------------- ----------                   
+BASES DE DATOS                                              6                   
+INTELIGENCIA ARTIFICIAL                                     6                   
+ALMACENES DE DATOS                                          3                   
+MINERIA DE DATOS                                            3                   
+INFORMATICA BASICA                                          6                   
+ALGEBRA                                                     6                   
+CALCULO                                                     6                   
+OPTIMIZACION                                                6                   
+GESTION DE RIESGOS                                          6                   
+ASTRONOMIA                                                  6                   
+ENSENANZA DE LA MATEMATICA                                  6                   
+
+A                                                  (CT+CP+CL)                   
+-------------------------------------------------- ----------                   
+ANALISIS COMPLEJO                                         7.5                   
+
+12 rows selected.
+
+SQL> SPOOL OFF
