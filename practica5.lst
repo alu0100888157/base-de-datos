@@ -1,0 +1,147 @@
+SQL> SPOOL
+currently spooling to practica5.lst
+SQL> SELECT *
+  2  FROM DUAL;
+
+D                                                                               
+-                                                                               
+X                                                                               
+
+SQL> SELECT SYSDATE
+  2  FROM DUAL;
+
+SYSDATE                                                                         
+---------                                                                       
+08-NOV-17                                                                       
+
+SQL> SELECT TO_CHAR(SYSDATE,'HH:WW:SS')
+  2  
+SQL> SELECT TO_CHAR(SYSDATE,'WW')
+  2  FROM DUAL;
+
+TO                                                                              
+--                                                                              
+45                                                                              
+
+SQL> SELECT CURRENT_DATE
+  2  FROM DUAL;
+
+CURRENT_D                                                                       
+---------                                                                       
+08-NOV-17                                                                       
+
+SQL> SELECT LOWER(P)
+  2  FROM PROFESOR;
+
+LOWER(P)                                                                        
+------------------------------------------------------------                    
+juan                                                                            
+carlos                                                                          
+pedro                                                                           
+maria                                                                           
+ivan                                                                            
+carmen                                                                          
+mario                                                                           
+francisco                                                                       
+angela                                                                          
+david                                                                           
+soledad                                                                         
+
+LOWER(P)                                                                        
+------------------------------------------------------------                    
+jose manuel                                                                     
+
+12 rows selected.
+
+SQL> SELECT SYSDATE - TO_DATE('18-OCT-1996');
+SELECT SYSDATE - TO_DATE('18-OCT-1996')
+                                      *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT SYSDATE - TO_DATE('18-OCT-1996');
+SELECT SYSDATE - TO_DATE('18-OCT-1996')
+                                      *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT SYSDATE - TO_DATE('18-OCT-1996')
+  2  FROM DUAL;
+
+SYSDATE-TO_DATE('18-OCT-1996')                                                  
+------------------------------                                                  
+                    7691.52126                                                  
+
+SQL> SELECT DISTINCT SYSDATE
+  2  FROM PROFESOR;
+
+SYSDATE                                                                         
+---------                                                                       
+08-NOV-17                                                                       
+
+SQL> SELECT UNIQUE SYSDATE
+  2  FROM PROFESOR;
+
+SYSDATE                                                                         
+---------                                                                       
+08-NOV-17                                                                       
+
+SQL> SELECT A
+  2  FROM ASIGNATURA
+  3  WHERE CAR IN (SELECT CAR
+  4  FROM AREA
+  5  WHERE LIKE A%);
+WHERE LIKE A%)
+      *
+ERROR at line 5:
+ORA-00936: missing expression 
+
+
+SQL> SELECT A
+  2  FROM ASIGNATURA
+  3  WHERE CAR IN (SELECT CAR
+  4  FROM AREA
+  5  WHERE AR LIKE (A%));
+WHERE AR LIKE (A%))
+                *
+ERROR at line 5:
+ORA-00911: invalid character 
+
+
+SQL> SELECT A
+  2  FROM ASIGNATURA
+  3  WHERE CAR IN (SELECT CAR
+  4  FROM AREA
+  5  WHERE LIKE AR 'A%');
+WHERE LIKE AR 'A%')
+      *
+ERROR at line 5:
+ORA-00936: missing expression 
+
+
+SQL> SELECT A
+  2  FROM ASIGNATURA
+  3  WHERE CAR IN (SELECT CAR
+  4  FROM AREA
+  5  WHERE AR LIK 'A%');
+WHERE AR LIK 'A%')
+         *
+ERROR at line 5:
+ORA-00920: invalid relational operator 
+
+
+SQL> SELECT A
+  2  FROM ASIGNATURA
+  3  WHERE CAR IN (SELECT CAR
+  4  FROM AREA
+  5  WHERE AR LIKE 'A%');
+
+A                                                                               
+--------------------------------------------------                              
+ALGEBRA                                                                         
+ANALISIS COMPLEJO                                                               
+ASTRONOMIA                                                                      
+
+SQL> SPOOL OFF
