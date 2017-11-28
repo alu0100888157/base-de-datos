@@ -1,0 +1,754 @@
+SQL> SELECT P
+  2  FROM PROFESOR
+  3  WHERE DNI IN (SELECT DNI
+  4  FROM PLAN
+  5  
+SQL> SELECT P
+  2  FROM PROFESOR
+  3  WHERE DNI IN (SELECT DNI
+  4  FROM PLAN_DOCENTE
+  5  WHERE (FF IS NULL) AND (CAS IN (SELECT CAS
+  6  FROM ASIGNATURA
+  7  WHERE (T='GII') OR (T='MII'))));
+
+P                                                                               
+------------------------------------------------------------                    
+JUAN                                                                            
+PEDRO                                                                           
+MARIA                                                                           
+CARLOS                                                                          
+SOLEDAD                                                                         
+JOSE MANUEL                                                                     
+ANGELA                                                                          
+IVAN                                                                            
+DAVID                                                                           
+
+9 rows selected.
+
+SQL> SELECT P
+  2  FROM PROFESOR
+  3  WHERE DNI IN (SELECT DNI
+  4  FROM PLAN_DOCENTE
+  5  WHERE (FF IS NOT NULL) AND (CAS IN (SELECT CAS
+  6  FROM ASIGNATURA
+  7  WHERE T='GII') INTERSECT (SELECT CAS
+  8  FROM ASIGNATURA
+  9  WHERE T='MII')));
+WHERE (FF IS NOT NULL) AND (CAS IN (SELECT CAS
+                                *
+ERROR at line 5:
+ORA-00907: missing right parenthesis 
+
+
+SQL> SELECT P
+  2  FROM PROFESOR
+  3  WHERE DNI IN (SELECT DNI
+  4  FROM PLAN_DOCENTE
+  5  WHERE (FF IS NOT NULL) AND (CAS IN (SELECT CAS
+  6  FROM ASIGNATURA
+  7  WHERE T='GII') INTERSECT (SELECT CAS
+  8  FROM ASIGNATURA
+  9  WHERE T='MII')));
+WHERE (FF IS NOT NULL) AND (CAS IN (SELECT CAS
+                                *
+ERROR at line 5:
+ORA-00907: missing right parenthesis 
+
+
+SQL> SELECT P
+  2  FROM PROFESOR
+  3  WHERE DNI IN (SELECT DNI
+  4  FROM PLAN_DOCENTE
+  5  WHERE (FF IS NOT NULL) AND (CAS IN ((SELECT CAS
+  6  FROM ASIGNATURA
+  7  WHERE T='GII') INTERSECT (SELECT CAS
+  8  FROM ASIGNATURA
+  9  WHERE T='MII'))));
+
+no rows selected
+
+SQL> SELECT P
+  2  FROM PROFESOR
+  3  
+SQL> SELECT P
+  2  FROM PROFESOR
+  3  WHERE DNI IS NOT (SELECT DNI
+  4  FROM PLAN_DOCENTE
+  5  WHERE FF IS NULL);
+WHERE DNI IS NOT (SELECT DNI
+                 *
+ERROR at line 3:
+ORA-00908: missing NULL keyword 
+
+
+SQL> SELECT DNI
+  2  FRO
+  3  
+SQL> SELECT P
+  2  FROM PROFESOR
+  3  WHERE DNI IN (SELECT DNI
+  4  FROM (SELECT DISTINCT DNI FROM PLAN_DOCENTE MINUS SELECT DNI FROM PLAN_DOCENTE WHERE FF IS NULL));
+
+P                                                                               
+------------------------------------------------------------                    
+CARMEN                                                                          
+
+SQL> SELECT A
+  2  FROM ASIGNATURA
+  3  WHERE T='GII';
+
+A                                                                               
+--------------------------------------------------                              
+BASES DE DATOS                                                                  
+INTELIGENCIA ARTIFICIAL                                                         
+INFORMATICA BASICA                                                              
+ALGEBRA                                                                         
+CALCULO                                                                         
+OPTIMIZACION                                                                    
+GESTION DE RIESGOS                                                              
+
+7 rows selected.
+
+SQL> SELECT AR,A
+  2  FROM AREA,ASIGNATURA
+  3  ;
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+ALGEBRA                                                                         
+BASES DE DATOS                                                                  
+                                                                                
+ALGEBRA                                                                         
+INTELIGENCIA ARTIFICIAL                                                         
+                                                                                
+ALGEBRA                                                                         
+ALMACENES DE DATOS                                                              
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+ALGEBRA                                                                         
+MINERIA DE DATOS                                                                
+                                                                                
+ALGEBRA                                                                         
+INFORMATICA BASICA                                                              
+                                                                                
+ALGEBRA                                                                         
+ALGEBRA                                                                         
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+ALGEBRA                                                                         
+CALCULO                                                                         
+                                                                                
+ALGEBRA                                                                         
+OPTIMIZACION                                                                    
+                                                                                
+ALGEBRA                                                                         
+GESTION DE RIESGOS                                                              
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+ALGEBRA                                                                         
+ASTRONOMIA                                                                      
+                                                                                
+ALGEBRA                                                                         
+ENSENANZA DE LA MATEMATICA                                                      
+                                                                                
+ALGEBRA                                                                         
+ANALISIS COMPLEJO                                                               
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+ANALISIS MATEMATICO                                                             
+BASES DE DATOS                                                                  
+                                                                                
+ANALISIS MATEMATICO                                                             
+INTELIGENCIA ARTIFICIAL                                                         
+                                                                                
+ANALISIS MATEMATICO                                                             
+ALMACENES DE DATOS                                                              
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+ANALISIS MATEMATICO                                                             
+MINERIA DE DATOS                                                                
+                                                                                
+ANALISIS MATEMATICO                                                             
+INFORMATICA BASICA                                                              
+                                                                                
+ANALISIS MATEMATICO                                                             
+ALGEBRA                                                                         
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+ANALISIS MATEMATICO                                                             
+CALCULO                                                                         
+                                                                                
+ANALISIS MATEMATICO                                                             
+OPTIMIZACION                                                                    
+                                                                                
+ANALISIS MATEMATICO                                                             
+GESTION DE RIESGOS                                                              
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+ANALISIS MATEMATICO                                                             
+ASTRONOMIA                                                                      
+                                                                                
+ANALISIS MATEMATICO                                                             
+ENSENANZA DE LA MATEMATICA                                                      
+                                                                                
+ANALISIS MATEMATICO                                                             
+ANALISIS COMPLEJO                                                               
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+ASTRONOMIA Y ASTROFISICA                                                        
+BASES DE DATOS                                                                  
+                                                                                
+ASTRONOMIA Y ASTROFISICA                                                        
+INTELIGENCIA ARTIFICIAL                                                         
+                                                                                
+ASTRONOMIA Y ASTROFISICA                                                        
+ALMACENES DE DATOS                                                              
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+ASTRONOMIA Y ASTROFISICA                                                        
+MINERIA DE DATOS                                                                
+                                                                                
+ASTRONOMIA Y ASTROFISICA                                                        
+INFORMATICA BASICA                                                              
+                                                                                
+ASTRONOMIA Y ASTROFISICA                                                        
+ALGEBRA                                                                         
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+ASTRONOMIA Y ASTROFISICA                                                        
+CALCULO                                                                         
+                                                                                
+ASTRONOMIA Y ASTROFISICA                                                        
+OPTIMIZACION                                                                    
+                                                                                
+ASTRONOMIA Y ASTROFISICA                                                        
+GESTION DE RIESGOS                                                              
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+ASTRONOMIA Y ASTROFISICA                                                        
+ASTRONOMIA                                                                      
+                                                                                
+ASTRONOMIA Y ASTROFISICA                                                        
+ENSENANZA DE LA MATEMATICA                                                      
+                                                                                
+ASTRONOMIA Y ASTROFISICA                                                        
+ANALISIS COMPLEJO                                                               
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+CIENCIAS DE LA COMPUTACION E INTELIGENCIA ARTIFICIAL                            
+BASES DE DATOS                                                                  
+                                                                                
+CIENCIAS DE LA COMPUTACION E INTELIGENCIA ARTIFICIAL                            
+INTELIGENCIA ARTIFICIAL                                                         
+                                                                                
+CIENCIAS DE LA COMPUTACION E INTELIGENCIA ARTIFICIAL                            
+ALMACENES DE DATOS                                                              
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+CIENCIAS DE LA COMPUTACION E INTELIGENCIA ARTIFICIAL                            
+MINERIA DE DATOS                                                                
+                                                                                
+CIENCIAS DE LA COMPUTACION E INTELIGENCIA ARTIFICIAL                            
+INFORMATICA BASICA                                                              
+                                                                                
+CIENCIAS DE LA COMPUTACION E INTELIGENCIA ARTIFICIAL                            
+ALGEBRA                                                                         
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+CIENCIAS DE LA COMPUTACION E INTELIGENCIA ARTIFICIAL                            
+CALCULO                                                                         
+                                                                                
+CIENCIAS DE LA COMPUTACION E INTELIGENCIA ARTIFICIAL                            
+OPTIMIZACION                                                                    
+                                                                                
+CIENCIAS DE LA COMPUTACION E INTELIGENCIA ARTIFICIAL                            
+GESTION DE RIESGOS                                                              
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+CIENCIAS DE LA COMPUTACION E INTELIGENCIA ARTIFICIAL                            
+ASTRONOMIA                                                                      
+                                                                                
+CIENCIAS DE LA COMPUTACION E INTELIGENCIA ARTIFICIAL                            
+ENSENANZA DE LA MATEMATICA                                                      
+                                                                                
+CIENCIAS DE LA COMPUTACION E INTELIGENCIA ARTIFICIAL                            
+ANALISIS COMPLEJO                                                               
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+DIDACTICA DE LA MATEMATICA                                                      
+BASES DE DATOS                                                                  
+                                                                                
+DIDACTICA DE LA MATEMATICA                                                      
+INTELIGENCIA ARTIFICIAL                                                         
+                                                                                
+DIDACTICA DE LA MATEMATICA                                                      
+ALMACENES DE DATOS                                                              
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+DIDACTICA DE LA MATEMATICA                                                      
+MINERIA DE DATOS                                                                
+                                                                                
+DIDACTICA DE LA MATEMATICA                                                      
+INFORMATICA BASICA                                                              
+                                                                                
+DIDACTICA DE LA MATEMATICA                                                      
+ALGEBRA                                                                         
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+DIDACTICA DE LA MATEMATICA                                                      
+CALCULO                                                                         
+                                                                                
+DIDACTICA DE LA MATEMATICA                                                      
+OPTIMIZACION                                                                    
+                                                                                
+DIDACTICA DE LA MATEMATICA                                                      
+GESTION DE RIESGOS                                                              
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+DIDACTICA DE LA MATEMATICA                                                      
+ASTRONOMIA                                                                      
+                                                                                
+DIDACTICA DE LA MATEMATICA                                                      
+ENSENANZA DE LA MATEMATICA                                                      
+                                                                                
+DIDACTICA DE LA MATEMATICA                                                      
+ANALISIS COMPLEJO                                                               
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+ESTADISTICA E INVESTIGACION OPERATIVA                                           
+BASES DE DATOS                                                                  
+                                                                                
+ESTADISTICA E INVESTIGACION OPERATIVA                                           
+INTELIGENCIA ARTIFICIAL                                                         
+                                                                                
+ESTADISTICA E INVESTIGACION OPERATIVA                                           
+ALMACENES DE DATOS                                                              
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+ESTADISTICA E INVESTIGACION OPERATIVA                                           
+MINERIA DE DATOS                                                                
+                                                                                
+ESTADISTICA E INVESTIGACION OPERATIVA                                           
+INFORMATICA BASICA                                                              
+                                                                                
+ESTADISTICA E INVESTIGACION OPERATIVA                                           
+ALGEBRA                                                                         
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+ESTADISTICA E INVESTIGACION OPERATIVA                                           
+CALCULO                                                                         
+                                                                                
+ESTADISTICA E INVESTIGACION OPERATIVA                                           
+OPTIMIZACION                                                                    
+                                                                                
+ESTADISTICA E INVESTIGACION OPERATIVA                                           
+GESTION DE RIESGOS                                                              
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+ESTADISTICA E INVESTIGACION OPERATIVA                                           
+ASTRONOMIA                                                                      
+                                                                                
+ESTADISTICA E INVESTIGACION OPERATIVA                                           
+ENSENANZA DE LA MATEMATICA                                                      
+                                                                                
+ESTADISTICA E INVESTIGACION OPERATIVA                                           
+ANALISIS COMPLEJO                                                               
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+LENGUAJES Y SISTEMAS INFORMATICOS                                               
+BASES DE DATOS                                                                  
+                                                                                
+LENGUAJES Y SISTEMAS INFORMATICOS                                               
+INTELIGENCIA ARTIFICIAL                                                         
+                                                                                
+LENGUAJES Y SISTEMAS INFORMATICOS                                               
+ALMACENES DE DATOS                                                              
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+LENGUAJES Y SISTEMAS INFORMATICOS                                               
+MINERIA DE DATOS                                                                
+                                                                                
+LENGUAJES Y SISTEMAS INFORMATICOS                                               
+INFORMATICA BASICA                                                              
+                                                                                
+LENGUAJES Y SISTEMAS INFORMATICOS                                               
+ALGEBRA                                                                         
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+LENGUAJES Y SISTEMAS INFORMATICOS                                               
+CALCULO                                                                         
+                                                                                
+LENGUAJES Y SISTEMAS INFORMATICOS                                               
+OPTIMIZACION                                                                    
+                                                                                
+LENGUAJES Y SISTEMAS INFORMATICOS                                               
+GESTION DE RIESGOS                                                              
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+LENGUAJES Y SISTEMAS INFORMATICOS                                               
+ASTRONOMIA                                                                      
+                                                                                
+LENGUAJES Y SISTEMAS INFORMATICOS                                               
+ENSENANZA DE LA MATEMATICA                                                      
+                                                                                
+LENGUAJES Y SISTEMAS INFORMATICOS                                               
+ANALISIS COMPLEJO                                                               
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+MATEMATICA APLICADA                                                             
+BASES DE DATOS                                                                  
+                                                                                
+MATEMATICA APLICADA                                                             
+INTELIGENCIA ARTIFICIAL                                                         
+                                                                                
+MATEMATICA APLICADA                                                             
+ALMACENES DE DATOS                                                              
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+MATEMATICA APLICADA                                                             
+MINERIA DE DATOS                                                                
+                                                                                
+MATEMATICA APLICADA                                                             
+INFORMATICA BASICA                                                              
+                                                                                
+MATEMATICA APLICADA                                                             
+ALGEBRA                                                                         
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+MATEMATICA APLICADA                                                             
+CALCULO                                                                         
+                                                                                
+MATEMATICA APLICADA                                                             
+OPTIMIZACION                                                                    
+                                                                                
+MATEMATICA APLICADA                                                             
+GESTION DE RIESGOS                                                              
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+MATEMATICA APLICADA                                                             
+ASTRONOMIA                                                                      
+                                                                                
+MATEMATICA APLICADA                                                             
+ENSENANZA DE LA MATEMATICA                                                      
+                                                                                
+MATEMATICA APLICADA                                                             
+ANALISIS COMPLEJO                                                               
+                                                                                
+
+96 rows selected.
+
+SQL> SELECT AR,A
+  2  FROM AREA,ASIGNATURA
+  3  WHERE ASIGNATURA.CAR=AREA.CAR;
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+ALGEBRA                                                                         
+ALGEBRA                                                                         
+                                                                                
+ANALISIS MATEMATICO                                                             
+ANALISIS COMPLEJO                                                               
+                                                                                
+ASTRONOMIA Y ASTROFISICA                                                        
+ASTRONOMIA                                                                      
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+CIENCIAS DE LA COMPUTACION E INTELIGENCIA ARTIFICIAL                            
+GESTION DE RIESGOS                                                              
+                                                                                
+CIENCIAS DE LA COMPUTACION E INTELIGENCIA ARTIFICIAL                            
+INTELIGENCIA ARTIFICIAL                                                         
+                                                                                
+DIDACTICA DE LA MATEMATICA                                                      
+ENSENANZA DE LA MATEMATICA                                                      
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+ESTADISTICA E INVESTIGACION OPERATIVA                                           
+OPTIMIZACION                                                                    
+                                                                                
+LENGUAJES Y SISTEMAS INFORMATICOS                                               
+INFORMATICA BASICA                                                              
+                                                                                
+LENGUAJES Y SISTEMAS INFORMATICOS                                               
+MINERIA DE DATOS                                                                
+                                                                                
+
+AR                                                                              
+------------------------------------------------------------                    
+A                                                                               
+--------------------------------------------------                              
+LENGUAJES Y SISTEMAS INFORMATICOS                                               
+ALMACENES DE DATOS                                                              
+                                                                                
+LENGUAJES Y SISTEMAS INFORMATICOS                                               
+BASES DE DATOS                                                                  
+                                                                                
+MATEMATICA APLICADA                                                             
+CALCULO                                                                         
+                                                                                
+
+12 rows selected.
+
+SQL> SELECT D,AR
+  2  FROM DEPARTAMENTO,AREA
+  3  WHERE CD.DEPARTAMENTO=CD.AREA;
+WHERE CD.DEPARTAMENTO=CD.AREA
+                      *
+ERROR at line 3:
+ORA-00904: "CD"."AREA": invalid identifier 
+
+
+SQL> SELECT D,AR
+  2  FROM DEPARTAMENTO,AREA
+  3  WHERE CD.DEPARTAMENTO = CD.AREA;
+WHERE CD.DEPARTAMENTO = CD.AREA
+                        *
+ERROR at line 3:
+ORA-00904: "CD"."AREA": invalid identifier 
+
+
+SQL> SELECT D,AR
+  2  FROM DEPARTAMENTO,AREA
+  3  WHERE DEPARTAMENTO.CD = AREA.CD;
+
+D                                                                               
+------------------------------------------------------------                    
+AR                                                                              
+------------------------------------------------------------                    
+ANALISIS MATEMATICO                                                             
+DIDACTICA DE LA MATEMATICA                                                      
+                                                                                
+ANALISIS MATEMATICO                                                             
+ANALISIS MATEMATICO                                                             
+                                                                                
+ANALISIS MATEMATICO                                                             
+MATEMATICA APLICADA                                                             
+                                                                                
+
+D                                                                               
+------------------------------------------------------------                    
+AR                                                                              
+------------------------------------------------------------                    
+ASTROFISICA                                                                     
+ASTRONOMIA Y ASTROFISICA                                                        
+                                                                                
+ESTADISTICA, INVESTIGACION OPERATIVA Y COMPUTACION                              
+CIENCIAS DE LA COMPUTACION E INTELIGENCIA ARTIFICIAL                            
+                                                                                
+ESTADISTICA, INVESTIGACION OPERATIVA Y COMPUTACION                              
+ESTADISTICA E INVESTIGACION OPERATIVA                                           
+                                                                                
+
+D                                                                               
+------------------------------------------------------------                    
+AR                                                                              
+------------------------------------------------------------                    
+ESTADISTICA, INVESTIGACION OPERATIVA Y COMPUTACION                              
+LENGUAJES Y SISTEMAS INFORMATICOS                                               
+                                                                                
+MATEMATICA FUNDAMENTAL                                                          
+ALGEBRA                                                                         
+                                                                                
+
+8 rows selected.
+
+SQL> SELECT D,P
+  2  FROM DEPARTAMENTO,AREA,PROFESOR
+  3  WHERE DEPARTAMENTO.CD=AREA.CD AND AREA.CAR=PROFESOR.CAR
+  4  ORDER BY D,P;
+
+D                                                                               
+------------------------------------------------------------                    
+P                                                                               
+------------------------------------------------------------                    
+ANALISIS MATEMATICO                                                             
+ANGELA                                                                          
+                                                                                
+ANALISIS MATEMATICO                                                             
+FRANCISCO                                                                       
+                                                                                
+ANALISIS MATEMATICO                                                             
+MARIO                                                                           
+                                                                                
+
+D                                                                               
+------------------------------------------------------------                    
+P                                                                               
+------------------------------------------------------------                    
+ASTROFISICA                                                                     
+CARMEN                                                                          
+                                                                                
+ESTADISTICA, INVESTIGACION OPERATIVA Y COMPUTACION                              
+CARLOS                                                                          
+                                                                                
+ESTADISTICA, INVESTIGACION OPERATIVA Y COMPUTACION                              
+DAVID                                                                           
+                                                                                
+
+D                                                                               
+------------------------------------------------------------                    
+P                                                                               
+------------------------------------------------------------                    
+ESTADISTICA, INVESTIGACION OPERATIVA Y COMPUTACION                              
+JOSE MANUEL                                                                     
+                                                                                
+ESTADISTICA, INVESTIGACION OPERATIVA Y COMPUTACION                              
+JUAN                                                                            
+                                                                                
+ESTADISTICA, INVESTIGACION OPERATIVA Y COMPUTACION                              
+MARIA                                                                           
+                                                                                
+
+D                                                                               
+------------------------------------------------------------                    
+P                                                                               
+------------------------------------------------------------                    
+ESTADISTICA, INVESTIGACION OPERATIVA Y COMPUTACION                              
+PEDRO                                                                           
+                                                                                
+ESTADISTICA, INVESTIGACION OPERATIVA Y COMPUTACION                              
+SOLEDAD                                                                         
+                                                                                
+MATEMATICA FUNDAMENTAL                                                          
+IVAN                                                                            
+                                                                                
+
+12 rows selected.
+
+SQL> SPOOL OFF
