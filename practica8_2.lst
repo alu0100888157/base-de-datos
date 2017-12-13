@@ -1,0 +1,158 @@
+SQL> CONNECT ALUMNO/xxxxx8@exthost.etsii.ull.es:9521/ORCLPDB1
+ERROR:
+ORA-01017: invalid username/password; logon denied 
+
+
+Warning: You are no longer connected to ORACLE.
+SQL> SPOOL
+currently spooling to practica8_2.lst
+SQL> SPOOL OFF
+SQL> SELECT * FROM ALU0100888157.DEPARTAMENTO;
+
+        CD D                                                                    
+---------- ------------------------------------------------------------         
+         1 ANALISIS MATEMATICO                                                  
+         2 ASTROFISICA                                                          
+         3 ESTADISTICA, INVESTIGACION OPERATIVA Y COMPUTACION                   
+         4 MATEMATICA FUNDAMENTAL                                               
+
+SQL> SELECT * FROM ALU0100888157.PROFESOR;
+SELECT * FROM ALU0100888157.PROFESOR
+                            *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> INSERT INTO ALU0100888157.PROFESOR VALUES(5,'ECONOMIA');
+INSERT INTO ALU0100888157.PROFESOR VALUES(5,'ECONOMIA')
+                          *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> INSERT INTO ALU0100888157.DEPARTAMENTO VALUES(5,'ECONOMIA');
+
+1 row created.
+
+SQL> UPDATE ALU0100888157.DEPARTAMENTO
+  2  SET D="ECONOMIA APLICADA' WHERE CD=5;
+ERROR:
+ORA-01740: missing double quote in identifier 
+
+
+SQL> UPDATE ALU0100888157.DEPARTAMENTO
+  2  SET D='ECONOMIA APLICADA' WHERE CD=5;
+
+1 row updated.
+
+SQL> UPDATE ALU0100888157.TITULACION
+  2  SET FAC='ETSII'
+  3  WHERE T='GII';
+
+1 row updated.
+
+SQL> DELETE FROM ALU0100888157.TITULACION
+  2  WHERE T='GII';
+DELETE FROM ALU0100888157.TITULACION
+                          *
+ERROR at line 1:
+ORA-01031: insufficient privileges 
+
+
+SQL> ROLLBACK
+  2  CREATE VIEW VISTA3
+  3  AS SELECT A,CAR
+  4  FROM ALU0100888157.ASIGNATURA
+  5  ;
+CREATE VIEW VISTA3
+*
+ERROR at line 2:
+ORA-02181: invalid option to ROLLBACK WORK 
+
+
+SQL> SELECT * FROM VISTA3;
+SELECT * FROM VISTA3
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> ROLLBACK;
+
+Rollback complete.
+
+SQL> CREATE VIEW VISTA3
+  2  AS SELECT A,CAR
+  3  FROM ALU0100888157.ASIGNATURA;
+
+View created.
+
+SQL> SELECT * FROM VISTA3;
+
+A                                                         CAR                   
+-------------------------------------------------- ----------                   
+BASES DE DATOS                                              7                   
+INTELIGENCIA ARTIFICIAL                                     4                   
+ALMACENES DE DATOS                                          7                   
+MINERIA DE DATOS                                            7                   
+INFORMATICA BASICA                                          7                   
+ALGEBRA                                                     1                   
+CALCULO                                                     8                   
+OPTIMIZACION                                                6                   
+GESTION DE RIESGOS                                          4                   
+ASTRONOMIA                                                  3                   
+ENSENANZA DE LA MATEMATICA                                  5                   
+
+A                                                         CAR                   
+-------------------------------------------------- ----------                   
+ANALISIS COMPLEJO                                           2                   
+ESTADISTICA                                                 6                   
+
+13 rows selected.
+
+SQL> DROP VIEW VISTA3;
+
+View dropped.
+
+SQL> DELETE ALU0100888157.ASIGNATURA;
+DELETE ALU0100888157.ASIGNATURA
+                     *
+ERROR at line 1:
+ORA-01031: insufficient privileges 
+
+
+SQL> CONNECT ALU010888157/Sh5L6px8@exthost.etsii.ull.es:9521/ORCLPDB1Sh5L6px8@exthost.etsii.ull.es:9521/ORCLPDB1
+ERROR:
+ORA-12514: TNS:listener does not currently know of service requested in connect 
+descriptor 
+
+
+Warning: You are no longer connected to ORACLE.
+SQL> SPOOL
+currently spooling to practica8_2.lst
+SQL> CONNECT ALU010888157/Sh5L6px8@exthost.etsii.ull.es:9521/ORCLPDB1
+ERROR:
+ORA-01017: invalid username/password; logon denied 
+
+
+SQL> CONNECT ALU0100888157/Sh5L6px8@exthost.etsii.ull.es:9521/ORCLPDB1
+Connected.
+SQL> SPOOL
+currently spooling to practica8_2.lst
+SQL> REVOKE ALL PRIVILEGES ON DEPARTAMENTO FROM ALUMNO;
+
+Revoke succeeded.
+
+SQL> REVOKE ALL PRIVILEGES ON AREA FROM ALUMNO;
+
+Revoke succeeded.
+
+SQL> REVOKE ALL PRIVILEGES ON ASIGNATURA FROM ALUMNO;
+
+Revoke succeeded.
+
+SQL> REVOKE ALL PRIVILEGES ON TITULACION FROM ALUMNO;
+
+Revoke succeeded.
+
+SQL> SPOOL OFF
